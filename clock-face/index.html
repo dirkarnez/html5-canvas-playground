@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/utils/math.js"></script>
+</head>
+
+<body>
+    <canvas id="myCanvas7" width="1000" height="1000" style="border:1px solid #d3d3d3;">
+        Your browser does not support the HTML canvas tag.
+    </canvas>
+
+    <canvas id="myCanvas12" width="1000" height="1000" style="border:1px solid #d3d3d3;">
+        Your browser does not support the HTML canvas tag.
+    </canvas>
+
+    <canvas id="myCanvas15" width="1000" height="1000" style="border:1px solid #d3d3d3;">
+        Your browser does not support the HTML canvas tag.
+    </canvas>
+
+    <script>
+        function drawClockFace(canvasElement, ticks) {
+            var ctx = canvasElement.getContext("2d");
+
+            const middleXY = 500;
+            const radius = 300;
+
+            const anglePerTicks = 360 / ticks;
+
+            for (var i = 0; i < ticks; i++) {
+                ctx.beginPath();
+                ctx.arc(middleXY + (sin(anglePerTicks * i) * radius), middleXY - (cos(anglePerTicks * i) * radius), 40, 0, 2 * Math.PI);
+                ctx.stroke();
+            }
+        }
+
+        drawClockFace(document.getElementById("myCanvas7"), 7);
+        drawClockFace(document.getElementById("myCanvas12"), 12);
+        drawClockFace(document.getElementById("myCanvas15"), 15);
+    </script>
+
+</body>
+
+</html>
