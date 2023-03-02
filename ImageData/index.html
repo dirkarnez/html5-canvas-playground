@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+  <canvas id="myCanvas" width="128" height="128">
+    Your browser does not support the HTML canvas tag.
+  </canvas>
+
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    const arr = new Uint8ClampedArray(canvas.width * canvas.height * 4);
+
+    // Fill the array with the same RGBA values
+
+    // for (let j = 0; j < 128; j++) {
+    //   for (let i = 0; i < 128; i++) {
+    //     arr[((j * 128 + i) * 3) + 0] = (i) % 256;
+    //     arr[((j * 128 + i) * 3) + 1] = (j) % 256;
+    //     arr[((j * 128 + i) * 3) + 2] = (j + i) % 256;
+    //     arr[i + 3] = 255; // A value
+    //   }
+    // }
+
+    for (let i = 0; i < arr.length; i += 4) {
+      arr[i + 0] = 0; // R value
+      arr[i + 1] = 190; // G value
+      arr[i + 2] = 0; // B value
+      arr[i + 3] = 255; // A value
+    }
+
+
+    // for (let j = 0; j < 128; j++) {
+    //   for (let i = 0; i < 128; i++) {
+    //     arr[((j * 128 + i) * 3) + 0] = (i) % 256;
+    //     arr[((j * 128 + i) * 3) + 1] = (j) % 256;
+    //     arr[((j * 128 + i) * 3) + 2] = (j + i) % 256;
+    //     arr[i + 3] = 255; // A value
+    //   }
+    // }
+
+
+    // Initialize a new ImageData object
+    let imageData = new ImageData(arr, canvas.width, canvas.height);
+
+    // Draw image data to the canvas
+    ctx.putImageData(imageData, 0, 0);
+  </script>
+</body>
+
+</html>
